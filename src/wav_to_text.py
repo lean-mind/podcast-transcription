@@ -46,6 +46,7 @@ class WavToText:
         return Model(abs_model_path)
 
     def _recognize_text(self, model, abs_file_path: str) -> None:
+        # TODO: look for bad performance, separate file into chunks and check with big dataset model
         recognizer = KaldiRecognizer(model, 16000)
         recognizer.SetWords(True)
         wav = wave.open(abs_file_path, "rb")
