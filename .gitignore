@@ -14,3 +14,4 @@ __pycache__/
 # Temporal files
 audio_mp3_folder/*.mp3
 audio_wav_folder/*.wav
+audio_text_folder/*.txt
