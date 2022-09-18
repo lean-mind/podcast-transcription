@@ -19,3 +19,7 @@ lint:   ## Lint the project files
 .PHONY: tests
 tests:  ## Locally run tests
 	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run pytest -v tests/
+
+.PHONY: run-local
+run-local:
+	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m src
