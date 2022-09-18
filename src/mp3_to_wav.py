@@ -1,4 +1,4 @@
-from os import path, listdir
+from os import listdir
 from pydub import AudioSegment
 
 
@@ -18,3 +18,4 @@ class Mp3ToWav:
         abs_dst_path = f"{self.dst_folder}{mp3_file.replace('.mp3', '.wav')}"
         audio = AudioSegment.from_mp3(abs_src_path)
         audio.export(abs_dst_path, format="wav")
+        print(f"- Transformed: {mp3_file}")

@@ -1,26 +1,14 @@
-# 🐍 Python TDD Boilerplate
-
-## 📝 Setup project
-
-- ### [Setup Pipenv 0 errors version](https://www.wolfremium.dev/blog/python-multiple-versions)
-- ### [Windows 10](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-windows-10)
-- ### [Make](https://es.wikipedia.org/wiki/Make)
--
-
-## 🗃️ Requirements
-
-- Python 3.10
-- Pipenv
-- Make
-- ffmpeg
+# 🔊 Podcast Transcripter
 
 ## 🧑‍💻 Install project
+
+> Requires Python 3.10
 
 ```bash
 make setup
 ```
 
-> we need to install the conversor with apt:
+> System installations
 
 ```bash
 sudo apt install ffmpeg
@@ -32,3 +20,11 @@ sudo apt install ffmpeg
 make help
 ```
 
+## VOSK
+
+- [Website](https://alphacephei.com/vosk/)
+- [Models](https://alphacephei.com/vosk/models) 
+
+### ES Models
+- Small (39MB) : https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip
+- Huge (1.4GB): https://alphacephei.com/vosk/models/vosk-model-es-0.42.zip
