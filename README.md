@@ -29,3 +29,6 @@ make help
 
 - Small (39MB) : https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip
 - Huge (1.4GB): https://alphacephei.com/vosk/models/vosk-model-es-0.42.zip
+
+## Whisper
+- [whisper](https://github.com/openai/whisper)
