@@ -4,11 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pydub = "*"
-vosk = "*"
-wget = "*"
-onnx = "*"
-pyaudio = "*"
 whisper = {git = "https://github.com/openai/whisper.git"}
 
 [dev-packages]

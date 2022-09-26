@@ -1,5 +1,9 @@
 .DEFAULT_GOAL := help
 
+MP3_FOLDER ?= audio_mp3_folder
+TEXT_FOLDER ?= audio_text_folder
+PROJECT_NAME ?= podcast-transcription
+
 .PHONY: help
 help:  ## Show this help
 	@grep -E '^\S+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | \
@@ -8,6 +12,10 @@ help:  ## Show this help
 .PHONY: setup
 setup: ## Setup local environment
 	@pipenv install --dev
+
+.PHONY: setup-docker
+setup-docker: ## Setup local environment only for dockerfile
+	@pipenv install
 
 .PHONY: lint
 lint:   ## Lint the project files
@@ -23,3 +31,11 @@ tests:  ## Locally run tests
 .PHONY: run-local
 run-local:
 	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m src
+
+.PHONY: build-image
+build-image:  ## Create a docker image
+	@docker build -t "${PROJECT_NAME}" $(PWD)
+
+.PHONY: run-image
+run-image:  ## Run docker image (needs build first)
+	@docker run --rm --volume "$(PWD)/${MP3_FOLDER}":/${MP3_FOLDER} "$(PWD)/${TEXT_FOLDER}":/${TEXT_FOLDER} ${PROJECT_NAME} make run-local
