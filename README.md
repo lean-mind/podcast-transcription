@@ -1,7 +1,7 @@
 # 🔊 Podcast Transcription
 
 - [Install project](./docs/install.md)
-- [Docker support]("./docs/docker-support.md")
+- [Docker support](./docs/docker-support.md)
 - [Usage](./docs/usage.md)
 - [Alternatives](./docs/alternatives.md)
 
