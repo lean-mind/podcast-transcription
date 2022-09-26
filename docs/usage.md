@@ -9,7 +9,7 @@
 
 ## Performance (Tested on local machine)
 
-Take in consideration the performance implications of the transformation.
+Take in consideration the performance implications of the transformation. For those examples I used 23 minutes of podcast and CPU not GPU.
 
 - Base: (4GB RAM) 8 minutes of execution time. There are some small mistakes in the transformation process.
 - Large: (12GB RAM) 3h 43 minutes of execution time. There are some small mistakes in the transformation process but with more quality than base.
