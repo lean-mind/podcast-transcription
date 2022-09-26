@@ -17,7 +17,7 @@ class SpeechToText:
     def _parse_audio_into_text(self, mp3_filename: str) -> str:
         abs_src_path = f"{self.src_folder}{mp3_filename}"
         print(f"PARSING FILE: {mp3_filename}")
-        model = whisper.load_model("large")
+        model = whisper.load_model("base")
         result = model.transcribe(abs_src_path)
         print(f"PARSED FILE: {mp3_filename}")
         return result["text"]
