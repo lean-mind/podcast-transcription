@@ -11,4 +11,7 @@
 make help
 ```
 
-## 🧪 [Whisper OpenAI](https://github.com/openai/whisper)
+## 📝 References
+
+- 🧪 [Whisper OpenAI](https://github.com/openai/whisper) All the project it's
+  based on this.
