@@ -1,9 +1,5 @@
 .DEFAULT_GOAL := help
 
-MP3_FOLDER ?= audio_mp3_folder
-TEXT_FOLDER ?= audio_text_folder
-PROJECT_NAME ?= podcast-transcription
-
 .PHONY: help
 help:  ## Show this help
 	@grep -E '^\S+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | \
@@ -34,8 +30,12 @@ run-local:
 
 .PHONY: build-image
 build-image:  ## Create a docker image
-	@docker build -t "${PROJECT_NAME}" $(PWD)
+	@docker build -t "podcast-transcription" $(PWD)
 
 .PHONY: run-image
 run-image:  ## Run docker image (needs build first)
-	@docker run --rm --volume "$(PWD)/${MP3_FOLDER}":/${MP3_FOLDER} "$(PWD)/${TEXT_FOLDER}":/${TEXT_FOLDER} ${PROJECT_NAME} make run-local
+	@docker run --rm \
+	-v "$(PWD)/audio_mp3_folder":/app/audio_mp3_folder \
+	-v "$(PWD)/audio_text_folder":/app/audio_text_folder \
+	podcast-transcription \
+	make run-local

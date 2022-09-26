@@ -9,3 +9,4 @@ RUN apt-get install -y make
 RUN apt-get install -y ffmpeg
 RUN pip install pipenv
 RUN make setup-docker
+RUN cd /app mkdir audio_mp3_folder audio_text_folder
