@@ -3,7 +3,7 @@
 ## System installations
 
 ```bash
-sudo apt install ffmpeg build-essential
+sudo apt-get install ffmpeg
 ```
 
 ## Requires Python 3.10
