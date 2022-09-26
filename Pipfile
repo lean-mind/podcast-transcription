@@ -9,6 +9,7 @@ vosk = "*"
 wget = "*"
 onnx = "*"
 pyaudio = "*"
+whisper = {git = "https://github.com/openai/whisper.git"}
 
 [dev-packages]
 black = "*"
