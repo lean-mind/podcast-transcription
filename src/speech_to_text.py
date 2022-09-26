@@ -23,7 +23,7 @@ class SpeechToText:
         return result["text"]
 
     def _save_text(self, podcast_content: str, mp3_filename: str):
-        abs_src_path = f"{self.src_folder}{mp3_filename}".replace(".mp3", ".txt")
+        abs_src_path = f"{self.dst_folder}{mp3_filename}".replace(".mp3", ".txt")
         with open(abs_src_path, 'w') as file:
             file.write(podcast_content)
             print(f"CONTENT SAVED ON: {abs_src_path}")
