@@ -20,7 +20,7 @@ class SpeechToText:
 
     def _transcribe_audio_frames(self, mp3_filename: str) -> str:
         audio_absolute_path = f"{self.src_folder}{mp3_filename}"
-        model = whisper.load_model(ModelSize.tiny)  # Here we select the model size
+        model = whisper.load_model(ModelSize.base)  # Here we select the model size
         result = model.transcribe(audio_absolute_path)
         return result["text"]
 
