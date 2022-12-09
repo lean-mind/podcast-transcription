@@ -1,15 +1,38 @@
 # 🧑‍💻 Install project
 
-## System installations
+> [Pyenv](https://www.wolfremium.dev/blog/python-multiple-versions) >
+> [Makefile](https://hernandis.me/2017/03/20/como-hacer-un-makefile.html)
+
+After `pyenv` installation, run this in this directory:
 
 ```bash
-sudo apt-get install ffmpeg
+pyenv install 3.10.7
 ```
 
-## Requires Python 3.10
+Set default Python version for current directory:
 
-> I recommend usage of pyenv for setup python environments.
+```bash
+pyenv local 3.10.7
+```
+
+Basic setup to use pipenv.
+
+```bash
+python -m pip install -U pip && pip install pipenv
+```
+
+This project includes make commands to make your life easier.
+
+```bash
+sudo apt-get install make
+```
+
+Install all the dependencies, and generates a virtual environment.
 
 ```bash
 make setup
 ```
+
+## 🧑‍💻 Commands
+
+Run `make help` to see all available commands.
