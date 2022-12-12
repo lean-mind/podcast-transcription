@@ -1,7 +1,7 @@
 from unittest import TestCase
 from assertpy import assert_that
 from os import listdir, remove
-from src.speech_to_text import SpeechToText
+from audio_parser.speech_to_text import SpeechToText
 
 
 class TestSpeechToText(TestCase):

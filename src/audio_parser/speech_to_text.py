@@ -1,7 +1,7 @@
 import whisper
 from os import listdir
 
-from src.model_sizes import ModelSize
+from audio_parser.model_sizes import ModelSize
 
 
 class SpeechToText:

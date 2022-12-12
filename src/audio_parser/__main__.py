@@ -1,6 +1,6 @@
 from os import path
-from src.speech_to_text import SpeechToText
-from src.logger import task_logger
+from audio_parser.speech_to_text import SpeechToText
+from audio_parser.logger import task_logger
 
 
 def main():
