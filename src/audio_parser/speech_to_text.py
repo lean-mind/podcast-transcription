@@ -1,6 +1,5 @@
 import whisper
 from os import listdir
-from audio_parser.logger import task_logger
 
 from audio_parser.model_sizes import ModelSize
 
