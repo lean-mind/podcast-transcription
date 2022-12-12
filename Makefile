@@ -11,7 +11,7 @@ setup: ## Setup local environment
 
 .PHONY: setup-docker
 setup-docker: ## Setup local environment only for dockerfile
-	@pipenv install
+	@pipenv install --ignore-pipfile
 
 .PHONY: lint
 lint:   ## Lint the project files
@@ -24,18 +24,44 @@ lint:   ## Lint the project files
 tests:  ## Locally run tests
 	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run pytest -v tests/
 
-.PHONY: run-local
-run-local:
-	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m src
+AUDIO_PARSER_MODULE ?= audio_parser
+VIDEO_PARSER_MODULE ?= video_parser
+DATA_DIRECTORY ?= $(PWD)/data
 
-.PHONY: build-image
-build-image:  ## Create a docker image
-	@docker build -t "podcast-transcription" $(PWD)
+.PHONY: run-audio-parser
+run-audio-parser: ## Runs locally selected module
+	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m $(AUDIO_PARSER_MODULE)
 
-.PHONY: run-image
-run-image:  ## Run docker image (needs build first)
+.PHONY: run-video-parser
+run-video-parser: ## Runs locally selected module
+	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m $(VIDEO_PARSER_MODULE)
+
+.PHONY: build-audio-parser-image
+build-audio-parser-image:  ## Create a docker image
+	@cp $(PWD)/docker/$(AUDIO_PARSER_MODULE)/Dockerfile .
+	@docker build -t "$(AUDIO_PARSER_MODULE)" $(PWD)
+	@rm Dockerfile
+
+.PHONY: build-video-parser-image
+build-video-parser-image:  ## Create a docker image
+	@cp $(PWD)/docker/$(VIDEO_PARSER_MODULE)/Dockerfile .
+	@docker build -t "$(VIDEO_PARSER_MODULE)" $(PWD)
+	@rm Dockerfile
+
+.PHONY: run-video-parser-image
+run-video-parser-image:  ## Run docker image (needs build first)
 	@docker run --rm \
-	-v "$(PWD)/audio_mp3_folder":/app/audio_mp3_folder \
-	-v "$(PWD)/audio_text_folder":/app/audio_text_folder \
-	podcast-transcription \
-	make run-local
+	-v "$(DATA_DIRECTORY)/mp3_folder":/app/mp3_folder \
+	-v "$(DATA_DIRECTORY)/text_folder":/app/text_folder \
+	-v "$(DATA_DIRECTORY)/mp4_folder":/app/mp4_folder \
+	$(VIDEO_PARSER_MODULE) \
+	make run-video-parser
+
+.PHONY: run-audio-parser-image
+run-audio-parser-image:  ## Run docker image (needs build first)
+	@docker run --rm \
+	-v "$(DATA_DIRECTORY)/mp3_folder":/app/mp3_folder \
+	-v "$(DATA_DIRECTORY)/text_folder":/app/text_folder \
+	-v "$(DATA_DIRECTORY)/mp4_folder":/app/mp4_folder \
+	$(AUDIO_PARSER_MODULE) \
+	make run-audio-parser
