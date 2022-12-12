@@ -12,7 +12,7 @@ __pycache__/
 .python-version
 
 # Temporal files
-data/*.mp3
-data/*.mp4
-data/*.txt
+data/**/*.mp3
+data/**/*.mp4
+data/**/*.txt
 models/*
