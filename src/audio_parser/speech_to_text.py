@@ -1,5 +1,6 @@
 import whisper
 from os import listdir
+from audio_parser.logger import task_logger
 
 from audio_parser.model_sizes import ModelSize
 
@@ -21,6 +22,7 @@ class SpeechToText:
     def _transcribe_audio_frames(self, mp3_filename: str) -> str:
         audio_absolute_path = f"{self.src_folder}{mp3_filename}"
         model = whisper.load_model(ModelSize.large)  # Here we select the model size
+        print(f"PARSING: {audio_absolute_path}")
         result = model.transcribe(audio_absolute_path)
         return result["text"]
 
@@ -29,3 +31,4 @@ class SpeechToText:
             ".mp3", ".txt")
         with open(text_file_destination, 'w') as file:
             file.write(podcast_content)
+            print(f"SAVING: {text_file_destination}")
