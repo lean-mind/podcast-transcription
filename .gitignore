@@ -12,7 +12,7 @@ __pycache__/
 .python-version
 
 # Temporal files
-audio_mp3_folder/*.mp3
-audio_wav_folder/*.wav
-audio_text_folder/*.txt
+data/*.mp3
+data/*.mp4
+data/*.txt
 models/*
