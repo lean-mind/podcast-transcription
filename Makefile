@@ -12,6 +12,8 @@ setup: ## Setup local environment
 .PHONY: setup-docker
 setup-docker: ## Setup local environment only for dockerfile
 	@pipenv install --ignore-pipfile
+	@cd /app && mkdir data && cd data
+	@mkdir mp3_folder text_folder mp4_folder
 
 .PHONY: lint
 lint:   ## Lint the project files
@@ -51,17 +53,17 @@ build-video-parser-image:  ## Create a docker image
 .PHONY: run-video-parser-image
 run-video-parser-image:  ## Run docker image (needs build first)
 	@docker run --rm \
-	-v "$(DATA_DIRECTORY)/mp3_folder":/app/mp3_folder \
-	-v "$(DATA_DIRECTORY)/text_folder":/app/text_folder \
-	-v "$(DATA_DIRECTORY)/mp4_folder":/app/mp4_folder \
+	-v "$(DATA_DIRECTORY)/mp3_folder":/app/data/mp3_folder \
+	-v "$(DATA_DIRECTORY)/text_folder":/app/data/text_folder \
+	-v "$(DATA_DIRECTORY)/mp4_folder":/app/data/mp4_folder \
 	$(VIDEO_PARSER_MODULE) \
 	make run-video-parser
 
 .PHONY: run-audio-parser-image
 run-audio-parser-image:  ## Run docker image (needs build first)
 	@docker run --rm \
-	-v "$(DATA_DIRECTORY)/mp3_folder":/app/mp3_folder \
-	-v "$(DATA_DIRECTORY)/text_folder":/app/text_folder \
-	-v "$(DATA_DIRECTORY)/mp4_folder":/app/mp4_folder \
+	-v "$(DATA_DIRECTORY)/mp3_folder":/app/data/mp3_folder \
+	-v "$(DATA_DIRECTORY)/text_folder":/app/data/text_folder \
+	-v "$(DATA_DIRECTORY)/mp4_folder":/app/data/mp4_folder \
 	$(AUDIO_PARSER_MODULE) \
 	make run-audio-parser
