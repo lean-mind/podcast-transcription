@@ -22,7 +22,7 @@ class SpeechToText:
         audio_absolute_path = f"{self.src_folder}{mp3_filename}"
         model = whisper.load_model(ModelSize.large)  # Here we select the model size
         print(f"PARSING: {audio_absolute_path}")
-        result = model.transcribe(audio_absolute_path)
+        result = model.transcribe(audio_absolute_path, verbose=False)
         return result["text"]
 
     def _save_text(self, podcast_content: str, mp3_filename: str):
