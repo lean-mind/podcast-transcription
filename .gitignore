@@ -16,3 +16,4 @@ data/**/*.mp3
 data/**/*.mp4
 data/**/*.txt
 models/*
+./Dockerfile
