@@ -24,7 +24,7 @@ python -m pip install -U pip && pip install pipenv
 This project includes make commands to make your life easier.
 
 ```bash
-sudo apt-get install make
+sudo apt-get install make ffmpeg
 ```
 
 Install all the dependencies, and generates a virtual environment.
